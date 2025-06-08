@@ -1,14 +1,14 @@
 #include "kruskal.hpp"
 
-std::vector<Edge> kruskal(Graph graph) {
+std::vector<Edge> kruskal(Graph &graph) {
     int n = graph.nrOfVertices;
     int m = graph.nrOfEdges;
     std::vector<Edge> mstEdges;
     std::sort(graph.edges.begin(), graph.edges.end(), &edgeCompare);
     // std::cout << "M=" <<m << std::endl;
-    for (int i = 0; i < m; i++) {
-        graph.edges[i].print();
-    }
+    // for (int i = 0; i < m; i++) {
+    //     graph.edges[i].print();
+    // }
 
     DisjointSet set(n);
     mstEdges.reserve(n);

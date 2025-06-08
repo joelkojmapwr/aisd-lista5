@@ -5,5 +5,5 @@
 #include "Graph.hpp"
 #include <algorithm>
 
-std::vector<Edge> kruskal(Graph graph);
+std::vector<Edge> kruskal(Graph &graph);
 #endif
