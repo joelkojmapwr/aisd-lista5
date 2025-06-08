@@ -1,16 +1,19 @@
 CXX=g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
-all: mainGraph.exe
+all: completeGraph.exe
 
-mainGraph.exe: mainGraph.o completeGraph.o
-	$(CXX) $(CXXFLAGS) mainGraph.o completeGraph.o -o mainGraph.exe
+completeGraph.exe: completeGraph.o common.o
+	$(CXX) $(CXXFLAGS) completeGraph.o common.o -o completeGraph.exe
 
-mainGraph.o: mainGraph.cpp completeGraph.h
-	$(CXX) $(CXXFLAGS) -c mainGraph.cpp
+# mainGraph.o: mainGraph.cpp completeGraph.h
+# 	$(CXX) $(CXXFLAGS) -c mainGraph.cpp
 
-completeGraph.o: completeGraph.cpp completeGraph.h
+completeGraph.o: completeGraph.cpp completeGraph.hpp 
 	$(CXX) $(CXXFLAGS) -c completeGraph.cpp
+
+common.o: common.cpp common.hpp
+	$(CXX) $(CXXFLAGS) -c common.cpp
 
 clean:
 	rm -f *.o *.exe
