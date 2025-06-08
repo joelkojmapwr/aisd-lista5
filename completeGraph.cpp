@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     }
 
     int n = std::stoi(argv[1]);
-    // std::cout << n;
+    std::cout << n << std::endl;
 
     for (int i=0; i<n; i++) {
         for (int j=i+1; j<n; j++) {

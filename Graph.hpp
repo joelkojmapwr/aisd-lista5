@@ -1,5 +1,11 @@
 #include <vector>
+#include "common.hpp"
 
+struct Edge {
+    int vertices[2];
+    float weight;
+    void print();
+};
 class Graph
 {
 private:
@@ -11,10 +17,8 @@ public:
     std::vector<Edge> edges;
     
     Graph(int n, int m);
-    ~Graph();
 };
 
-struct Edge {
-    int vertices[2];
-    float weight;
-};
+
+
+bool edgeCompare(const Edge& a, const Edge& b);

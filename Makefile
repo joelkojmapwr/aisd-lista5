@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
-all: completeGraph.exe
+all: completeGraph.exe mainKruskal.exe
 
 completeGraph.exe: completeGraph.o common.o
 	$(CXX) $(CXXFLAGS) completeGraph.o common.o -o completeGraph.exe
@@ -9,11 +9,23 @@ completeGraph.exe: completeGraph.o common.o
 # mainGraph.o: mainGraph.cpp completeGraph.h
 # 	$(CXX) $(CXXFLAGS) -c mainGraph.cpp
 
+mainKruskal.exe: mainKruskal.o kruskal.o common.o Graph.o
+	$(CXX) $(CXXFLAGS) mainKruskal.o kruskal.o common.o Graph.o -o mainKruskal.exe
+
+Graph.o: Graph.cpp Graph.hpp
+	$(CXX) $(CXXFLAGS) -c Graph.cpp
+
+mainKruskal.o: mainKruskal.cpp kruskal.hpp common.hpp
+	$(CXX) $(CXXFLAGS) -c mainKruskal.cpp
+
 completeGraph.o: completeGraph.cpp completeGraph.hpp 
 	$(CXX) $(CXXFLAGS) -c completeGraph.cpp
 
 common.o: common.cpp common.hpp
 	$(CXX) $(CXXFLAGS) -c common.cpp
+
+kruskal.o: kruskal.cpp kruskal.hpp
+	$(CXX) $(CXXFLAGS) -c kruskal.cpp
 
 clean:
 	rm -f *.o *.exe

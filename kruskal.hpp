@@ -1,4 +1,9 @@
+#ifndef KRUSKAL
+#define KRUSKAL
+
 #include "common.hpp"
 #include "Graph.hpp"
+#include <algorithm>
 
-std::vector<int> kruskal(Graph graph);
+std::vector<Edge> kruskal(Graph graph);
+#endif

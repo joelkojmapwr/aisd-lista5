@@ -1,3 +1,6 @@
+#ifndef COMMON
+#define COMMON
+
 #include <random>
 #include <iostream>
 
@@ -12,3 +15,5 @@ public:
     int find(int v);
     void uni(int root1, int root2);
 };
+
+#endif
