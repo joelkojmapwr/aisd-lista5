@@ -23,7 +23,7 @@ std::vector<Edge> kruskal(Graph &graph) {
             set.uni(root_u, root_v);
         }
     }
-    std::cout << "MST Edges: " << std::endl;
+    // std::cout << "MST Edges: " << std::endl;
     for (Edge edge : mstEdges) {
         edge.print();
     }

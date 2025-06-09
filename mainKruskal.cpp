@@ -6,7 +6,8 @@ int main(int argc, char* argv[]) {
     std::cin >> n;
     int m = (n*(n-1))/2;
     Graph graph(n, m);
-    std::cout << "M = " << m << std::endl;
+    // std::cout << "M = " << m << std::endl;
+    std::cout << n << std::endl;
 
     for (int i = 0; i < m; i++) {
         int u, v;

@@ -25,7 +25,18 @@ std::vector<Edge> primMST(int n, int m, std::vector<std::pair<int, float>> adj[]
 
     for (int i=0; i<n; i++) {
         int u = minKey(key, visited);
+        int uParent = parent[u];
+        float w = key[u];
         visited[u] = true;
+        if (uParent != -1) { // if this is root don't add to list
+            if (uParent < u) {
+                mstEdges.push_back(Edge{uParent, u, w});
+            } else {
+                mstEdges.push_back(Edge{u, uParent, w});
+            }
+        }
+        
+        
         for (auto &v : adj[u]) {
             if (visited[v.first] == false && v.second < key[v.first]) {
                 key[v.first] = v.second; // Update the key value
@@ -33,5 +44,6 @@ std::vector<Edge> primMST(int n, int m, std::vector<std::pair<int, float>> adj[]
             }
         }
     }
+    // std::cout << "Len of mstedges: " << mstEdges.size() << std::endl;
     return mstEdges;
 }
