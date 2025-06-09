@@ -1,13 +1,13 @@
 CXX=g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
-all: completeGraph.exe mainKruskal.exe mainPrim.exe
+all: completeGraph.exe mainKruskal.exe mainPrim.exe propagateInfo.exe
 
 completeGraph.exe: completeGraph.o common.o
 	$(CXX) $(CXXFLAGS) completeGraph.o common.o -o completeGraph.exe
 
-# mainGraph.o: mainGraph.cpp completeGraph.h
-# 	$(CXX) $(CXXFLAGS) -c mainGraph.cpp
+propagateInfo.exe: propagateInfo.o common.o
+	$(CXX) $(CXXFLAGS) propagateInfo.o common.o -o propagateInfo.exe
 
 mainKruskal.exe: mainKruskal.o kruskal.o common.o Graph.o
 	$(CXX) $(CXXFLAGS) mainKruskal.o kruskal.o common.o Graph.o -o mainKruskal.exe

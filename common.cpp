@@ -14,6 +14,12 @@ float getRandom() {
     return newRandom;
 }
 
+int randomInt(int start, int end) {
+    float randFloat = getRandom();
+    int intervalLength = end - start + 1;
+    return start + static_cast<int>(randFloat * intervalLength);
+}
+
 DisjointSet::DisjointSet(int n) {
     parent.resize(n);
     rank.resize(n);

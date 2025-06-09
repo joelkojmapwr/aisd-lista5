@@ -6,6 +6,8 @@
 
 float getRandom();
 
+int randomInt(int start, int end); // inclusive
+
 class DisjointSet {
 private:
     std::vector<int> parent;
