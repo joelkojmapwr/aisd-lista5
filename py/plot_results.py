@@ -3,8 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 
-n_array = np.arange(500, 2001, 100)
-k = 4
+n_array = np.arange(400, 6001, 400)
 lista = "lista5"
 
 algorithms = ["Prim", "Kruskal"]

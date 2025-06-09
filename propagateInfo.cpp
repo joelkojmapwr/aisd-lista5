@@ -13,7 +13,7 @@ struct Node {
 
 void printOrderAndCost(Node* root) {
     if (!root || root->id == -1) return;
-    std::cout << "Node: " << root->id << ", Cost: " << root->complexity << " ChildrenOrder: ";
+    // std::cout << "Node: " << root->id << ", Cost: " << root->complexity << " ChildrenOrder: ";
     for (auto child : root->children){
         std::cout << child->id << " ";
     }
@@ -71,7 +71,7 @@ int main() {
 
     int root = randomInt(0, n-1);
     // int root = 3;
-    std::cout << "Chosen root: " << root << std::endl;
+    // std::cout << "Chosen root: " << root << std::endl;
 
     std::vector<std::vector<int>> children(n);
     std::vector<int> parent(n, -2);
@@ -91,15 +91,16 @@ int main() {
             }
         }
     }
-    for (int i=0; i<n; i++){
-        std::cout << "Children of " << i << " ";
-        for (auto child : children[i]) {
-            std::cout << child << " ";
-        }
-        std::cout << std::endl;
-        std::cout << "Parent of " << i << " " << parent[i] << std::endl;
-    }
+    // for (int i=0; i<n; i++){
+    //     // std::cout << "Children of " << i << " ";
+    //     for (auto child : children[i]) {
+    //         std::cout << child << " ";
+    //     }
+    //     std::cout << std::endl;
+    //     // std::cout << "Parent of " << i << " " << parent[i] << std::endl;
+    // }
 
     Node* rootNode = getCallingOrder(root, children);
-    printOrderAndCost(rootNode);
+    // printOrderAndCost(rootNode);
+    std::cout << rootNode->complexity << std::endl;
 }

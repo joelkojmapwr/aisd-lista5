@@ -3,7 +3,7 @@ import json
 import numpy as np
 import time
 
-n_array = np.arange(500, 2001, 100)
+n_array = np.arange(400, 6001, 400)
 
 lista = "lista5"
 
@@ -38,7 +38,7 @@ def aggregate_experiments(algorithms=["Prim"], n_array=[40, 50], k=4):
     
 # run_experiment(n=3000)
 
-aggregate_experiments(n_array=n_array, algorithms=["Kruskal", "Prim"])
+aggregate_experiments(n_array=n_array, algorithms=["Kruskal", "Prim"], k=10)
 # inputs = ["randoms.exe", "ascending.exe"]
 # for input_src in inputs:
 #     aggregate_experiments(n_array=n_array, input_src=input_src, treeType="SplayTree", k=20)
