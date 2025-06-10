@@ -1,6 +1,8 @@
 #include "common.hpp"
 
 
+int currentCompareCounter = 0;
+
 bool isGreater(int a, int b) {
     currentCompareCounter++;
     return a > b;

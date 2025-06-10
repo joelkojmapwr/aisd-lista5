@@ -1,6 +1,7 @@
 #include "BinomialHeap.hpp"
 
 int n;
+extern int currentCompareCounter;
 
 int main() {
     std::cin >> n;

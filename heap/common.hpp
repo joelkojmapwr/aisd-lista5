@@ -6,7 +6,7 @@
 #include <random>
 #include <algorithm>
 
-int currentCompareCounter = 0;
+
 
 bool isGreater(int a, int b);
 bool equals(int a, int b);

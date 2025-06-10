@@ -1,4 +1,7 @@
 #include "BinomialHeap.hpp"
+
+extern int currentCompareCounter;
+
 BinomialHeap::BinomialHeap() {
     // Initialize an empty binomial heap
     roots = std::list<Node*>();
@@ -118,6 +121,7 @@ void BinomialHeap::uni(BinomialHeap inputHeap) {
 }
 
 void BinomialHeap::insert(int value) {
+    std::cout << "Inserting value: " << value << std::endl;
     Node* x = new Node();
     x->key = value;
     BinomialHeap H = makeHeap();

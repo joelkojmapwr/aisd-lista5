@@ -1,3 +1,6 @@
+#ifndef BINOMIAL_HEAP
+#define BINOMIAL_HEAP
+
 #include "BinomialTree.hpp"
 #include "common.hpp"
 #include <list>
@@ -23,3 +26,5 @@ public:
 BinomialHeap makeHeap();
 
 Node* findMinNode(std::list<Node*> nodes);
+
+#endif

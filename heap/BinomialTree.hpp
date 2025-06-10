@@ -1,3 +1,6 @@
+#ifndef BINOMIAL_TREE_HPP
+#define BINOMIAL_TREE_HPP
+
 #include "common.hpp"
 
 struct Node {
@@ -13,3 +16,5 @@ struct BinomialTree {
 
     Node* root;
 };
+
+#endif // BINOMIAL_TREE_HPP
