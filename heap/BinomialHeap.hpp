@@ -16,6 +16,7 @@ public:
     void link(Node* y, Node* z);
     void merge(BinomialHeap inputHeap);
     void uni(BinomialHeap inputHeap);
+    void insert(Node* x);
 };
 
 BinomialHeap makeHeap();
