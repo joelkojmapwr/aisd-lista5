@@ -5,16 +5,16 @@ extern int currentCompareCounter;
 BinomialHeap::BinomialHeap() {
     // Initialize an empty binomial heap
     roots = std::list<Node*>();
-    std::cout << "Initialized heap with roots size: " << roots.size() << std::endl;
+    // std::cout << "Initialized heap with roots size: " << roots.size() << std::endl;
 }
 
 BinomialHeap::~BinomialHeap() {
     // Destructor to clean up the heap
-    for (Node* root : roots) {
-        delete root; // Assuming nodes are dynamically allocated
-    }
-    roots.clear();
-    std::cout << "Destroyed heap with roots size: " << roots.size() << std::endl;
+    // for (Node* root : roots) {
+    //     delete root; // Assuming nodes are dynamically allocated
+    // }
+    // roots.clear();
+    // std::cout << "Destroyed heap with roots size: " << roots.size() << std::endl;
 }
 
 Node* BinomialHeap::minimum() {
@@ -91,6 +91,9 @@ BinomialHeap makeHeap() {
 }
 
 void BinomialHeap::uni(BinomialHeap inputHeap) {
+    // std::cout << "Merging heaps..." << std::endl;
+    // plotHeap();
+    // inputHeap.plotHeap();
     merge(inputHeap);
     if (roots.empty()) {
         return; // Nothing to do if the heap is empty
@@ -106,6 +109,7 @@ void BinomialHeap::uni(BinomialHeap inputHeap) {
             if (isGreaterOrEqual(nextX->key, x->key)) {
                 x->sibling = nextX->sibling;
                 link(nextX, x);
+                roots.remove(nextX); // Remove nextX from the roots list
             } else {
                 if (prevX == nullptr) {
                     roots.pop_front();
@@ -113,6 +117,7 @@ void BinomialHeap::uni(BinomialHeap inputHeap) {
                     prevX->sibling = nextX;
                 }
                 link(x, nextX);
+                roots.remove(x); // Remove x from the roots list
                 x = nextX;
             }
         }
@@ -120,8 +125,38 @@ void BinomialHeap::uni(BinomialHeap inputHeap) {
     }
 }
 
+void BinomialHeap::printBinomialTree(Node* node, int level) {
+        if (!node) return;
+
+        // Print current node with indentation
+        std::cout << std::string(level * 2, ' ') << "Key: " << node->key 
+                  << " (Degree: " << node->degree << ")" << std::endl;
+
+        // Recursively print children (child pointer points to leftmost child)
+        Node* child = node->child;
+        while (child) {
+            printBinomialTree(child, level + 1);
+            child = child->sibling;
+        }
+    }
+
+void BinomialHeap::plotHeap() {
+        if (roots.empty()) {
+            std::cout << "Heap is empty" << std::endl;
+            return;
+        }
+
+        std::cout << "Binomial Heap Structure:" << std::endl;
+        int treeIndex = 0;
+        for (Node* root : roots) {
+            std::cout << "Tree " << treeIndex++ << " (Degree " << root->degree << "):" << std::endl;
+            printBinomialTree(root);
+            std::cout << std::endl;
+        }
+    }
+
 void BinomialHeap::insert(int value) {
-    std::cout << "Inserting value: " << value << std::endl;
+    // std::cout << "Inserting value: " << value << std::endl;
     Node* x = new Node();
     x->key = value;
     BinomialHeap H = makeHeap();
@@ -151,6 +186,17 @@ Node* BinomialHeap::extractMin() {
     if (x == nullptr) {
         return nullptr; // No elements in the heap
     }
+    auto it = std::find(roots.begin(), roots.end(), x);
+    Node* prevX = nullptr;
+    if (it != roots.begin()) {
+        prevX = *std::prev(it);
+        if (it!= roots.end()) {
+            prevX->sibling = x->sibling; // Set the previous node's sibling to x's sibling
+        } else {
+            prevX->sibling = nullptr; // If x is the last node, set sibling to nullptr
+        }
+    }
+    
     roots.remove(x); // Remove x from the roots list
     if (x->child == nullptr) {
         return x; // If x has no children, return it
@@ -176,4 +222,8 @@ Node* BinomialHeap::extractMin() {
     }
     uni(H); // Merge the new heap with the current heap
     return x; // Return the extracted minimum node
+}
+
+bool BinomialHeap::isEmpty() {
+    return roots.empty();
 }

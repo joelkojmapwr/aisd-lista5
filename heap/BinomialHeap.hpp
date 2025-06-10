@@ -21,6 +21,10 @@ public:
     void uni(BinomialHeap inputHeap);
     void insert(int value);
     Node* extractMin();
+    void plotHeap() ;
+    void printBinomialTree(Node* node, int level = 0);
+
+    bool isEmpty();
 };
 
 BinomialHeap makeHeap();
