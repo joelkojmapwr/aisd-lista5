@@ -14,16 +14,24 @@ int main(int argc, char* argv[]) {
     std::vector<int> perm = randomPermutation(2*n);
     for (int i = 0; i < n; i++) {
         H1.insert(perm[2*i + 1]);
+        std::cout << currentCompareCounter << std::endl;
+        currentCompareCounter = 0;
         // H1.plotHeap();
         H2.insert(perm[2*i]);
+        std::cout << currentCompareCounter << std::endl;
+        currentCompareCounter = 0;
         // H2.plotHeap();
     }
 
     H1.uni(H2);
+    std::cout << currentCompareCounter << std::endl;
+    currentCompareCounter = 0;
     int previousMin = -1;
     for (int i = 0; i < n*2; i++) {
         // std::cout << "Extracting minimum from heap: ";
         Node* minNode = H1.extractMin();
+        std::cout << currentCompareCounter << std::endl;
+        currentCompareCounter = 0;
         if (minNode == nullptr) {
             throw std::runtime_error("Error: Heap is empty!");
             return 0;
@@ -41,5 +49,5 @@ int main(int argc, char* argv[]) {
         throw std::runtime_error("Error: Heap is not empty after extracting all elements!");
         return 2;
     }
-    std::cout << currentCompareCounter << std::endl;
+    
 }
