@@ -16,7 +16,10 @@ public:
     void link(Node* y, Node* z);
     void merge(BinomialHeap inputHeap);
     void uni(BinomialHeap inputHeap);
-    void insert(Node* x);
+    void insert(int value);
+    Node* extractMin();
 };
 
 BinomialHeap makeHeap();
+
+Node* findMinNode(std::list<Node*> nodes);

@@ -117,7 +117,9 @@ void BinomialHeap::uni(BinomialHeap inputHeap) {
     }
 }
 
-void BinomialHeap::insert(Node* x) {
+void BinomialHeap::insert(int value) {
+    Node* x = new Node();
+    x->key = value;
     BinomialHeap H = makeHeap();
     x->parent = nullptr;
     x->child = nullptr;
