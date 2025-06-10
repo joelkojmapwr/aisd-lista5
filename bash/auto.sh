@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ..
 
 output_file="results.txt"
 > "$output_file"  # Clear the output file
