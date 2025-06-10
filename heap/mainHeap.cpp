@@ -3,8 +3,12 @@
 int n;
 extern int currentCompareCounter;
 
-int main() {
-    std::cin >> n;
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <n>" << std::endl;
+        return 1;
+    }
+    n = std::atoi(argv[1]);
     BinomialHeap H1 = makeHeap();
     BinomialHeap H2 = makeHeap();
     std::vector<int> perm = randomPermutation(2*n);
@@ -24,7 +28,7 @@ int main() {
             throw std::runtime_error("Error: Heap is empty!");
             return 0;
         }
-        std::cout << minNode->key << " ";
+        // std::cout << minNode->key << " ";
         if (minNode->key < previousMin) {
             throw std::runtime_error("Error: extracted minimum is less than the previous minimum!");
             return 1;
@@ -32,4 +36,10 @@ int main() {
         previousMin = minNode->key;
         delete minNode; // Clean up the extracted node
     }
+    // std::cout << std::endl;
+    if(!H1.isEmpty()) {
+        throw std::runtime_error("Error: Heap is not empty after extracting all elements!");
+        return 2;
+    }
+    std::cout << currentCompareCounter << std::endl;
 }
