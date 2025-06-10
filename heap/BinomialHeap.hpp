@@ -10,10 +10,12 @@ private:
 
 public:
     BinomialHeap();
+    ~BinomialHeap();
     std::list<Node*> roots;
-
+    Node* minimum();
+    void link(Node* y, Node* z);
+    void merge(BinomialHeap inputHeap);
+    void uni(BinomialHeap inputHeap);
 };
 
-BinomialHeap makeHeap() {
-    return BinomialHeap();
-}
+BinomialHeap makeHeap();
